@@ -1,6 +1,10 @@
 import React from 'react';
 
 const AdditionalFeature = props => {
+  const addFeature = event => {
+
+  }
+
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
@@ -9,5 +13,9 @@ const AdditionalFeature = props => {
     </li>
   );
 };
+
+const mapStateToProps = state => {
+  
+}
 
 export default AdditionalFeature;
