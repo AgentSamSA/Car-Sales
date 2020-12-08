@@ -2,7 +2,7 @@ import React from 'react';
 
 const AdditionalFeature = props => {
   const addFeature = event => {
-
+    console.log(props.state);
   }
 
   return (
@@ -15,7 +15,7 @@ const AdditionalFeature = props => {
 };
 
 const mapStateToProps = state => {
-  
+
 }
 
 export default AdditionalFeature;
