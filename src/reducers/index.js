@@ -1,4 +1,4 @@
-import { ADD_FEATURE, REMOVE_FEATURE, UPDATE_ADDITIONAL_PRICE } from "../actions/index";
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions/index";
 
 export const initialState = {
     additionalPrice: 0,
@@ -21,28 +21,26 @@ export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case (ADD_FEATURE):
             return ({
-                ...state, car: {
-                    ...state.car, features: [
-                        ...state.car.features, { feature: action.payload }
-                    ]
+                ...state,
+                additionalPrice: state.additionalPrice + action.payload.price,
+                car: {
+                    ...state.car, features: [...state.car.features, action.payload]
                 },
-                additionalFeatures: [
-                    state.additionalFeatures.filter(feature => feature !== action.payload)
-                ]
+                additionalFeatures: state.additionalFeatures.filter(feature => {
+                    return feature.id !== action.payload.id
+                })
             });
         case (REMOVE_FEATURE):
             return ({
-                ...state, car: {
-                    ...state.car, features: [
-                        state.car.filter(feature => feature !== action.payload)
-                    ]
+                ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
+                car: {
+                    ...state.car, features: state.car.features.filter(feature => {
+                        return feature.id !== action.payload.id
+                    })
                 },
-                additionalFeatures: [
-                    ...state.additionalFeatures, { feature: action.payload }
-                ]
+                additionalFeatures: [...state.additionalFeatures, action.payload]
             });
-        case (UPDATE_ADDITIONAL_PRICE):
-            return ({ ...state, additionalPrice: action.payload });
         default:
             return (state);
     }
