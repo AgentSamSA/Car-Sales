@@ -42,6 +42,6 @@ export const rootReducer = (state = initialState, action) => {
                 additionalFeatures: [...state.additionalFeatures, action.payload]
             });
         default:
-            return (state);
+            return state;
     }
 }
