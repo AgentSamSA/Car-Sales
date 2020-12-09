@@ -10,8 +10,6 @@ import { initialState } from "./reducers/index";
 const App = () => {
   const state = initialState;
 
-  console.log(state);
-
   return (
     <div className="boxes">
       <div className="box">
